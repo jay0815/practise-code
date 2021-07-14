@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-07-12 14:26:26
- * @LastEditTime: 2021-07-14 21:13:55
+ * @LastEditTime: 2021-07-14 22:14:53
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /frontend-study/week01/encode64.js
@@ -29,6 +29,7 @@ const caculateIntegerPart = (integerValue) => {
   }
   return INTEGER_PART + "";
 }
+// Todo: use bigInt and manipulate characters to replace Digital Accumulation’ way
 const caculateDecimalPart = (decimal) => {
   if (decimal) {
     let count = (decimal + "").length;

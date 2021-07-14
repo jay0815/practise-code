@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-07-13 17:03:24
- * @LastEditTime: 2021-07-14 22:03:04
+ * @LastEditTime: 2021-07-14 22:15:21
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /frontend-study/week01/decode64.js
@@ -84,6 +84,7 @@ const caculateIntegerPart = (integer) => {
   }
   return INTEGER_PART+"";
 }
+// Todo: use bigInt and manipulate characters to replace Digital Accumulation’ way
 const caculateDecimalPart = (decimal) => {
   let DECIMAL_PART = 0;
   const DECIMAL_LENGTH = decimal.length - 1;
