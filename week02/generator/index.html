@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .newslist {
+      display: flex;
+      flex-direction: column;
+    }
+    img {
+      border: 1px solid red;
+    }
+    .img {
+      border: 1px solid royalblue;
+    }
+    .date {
+      border: 1px solid goldenrod;
+    }
+  </style>
+</head>
+<body>
+  <div id="container"></div>
+  <script src="./get.js"></script>
+  <script src="./uuid.js"></script>
+  <script src="./analyzeAttributes.js"></script>
+  <script src="./complier.js"></script>
+  <script src="./build.js"></script>
+  <script src="./render.js"></script>
+  <script>
+    let tmpl = `<div class="newslist">
+        <div class="img" v-if="info.showImage"style="color:red"><img src="{{image}}" /></div>
+        <div class="date" v-if="info.showDate">{{info.date}}</div>
+        <div class="img">{{info.name}}</div>
+    </div>`;
+    render(tmpl, {
+      image: "some img",
+      info: { showImage: true, showDate: true, name: "aaa", date: Date.now() }
+    })
+
+  </script>
+</body>
+</html>
