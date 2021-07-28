@@ -34,8 +34,6 @@ self.MonacoEnvironment = {
   }
 }
 
-monaco
-
 export default defineComponent({
   setup() {
     const root = ref();
