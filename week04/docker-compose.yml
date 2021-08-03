@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  nginx:
+    mem_limit: 50m
+    restart: always
+    image: nginx:1.19.10
+    container_name: nginx
+    depends_on:
+      - main
+      - react
+      - vue
+    ports:
+      - "80:80"
+      - "443:443"
+      - "7000:7000"
+      - "7001:7001"
+      - "7002:7002"
+    volumes:
+      - ./micro.conf:/etc/nginx/micro.conf
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - main-static-files:/etc/nginx/html/main/
+      - react-static-files:/etc/nginx/html/react/
+      - vue-static-files:/etc/nginx/html/vue/
+  main:
+    build: ./micro-app-main
+    container_name: main
+    volumes:
+      - main-static-files:/build/dist
+  vue:
+    build: ./micro-app-vue
+    container_name: vue
+    volumes:
+      - vue-static-files:/build/dist
+  react:
+    build: ./micro-app-react
+    container_name: react
+    volumes:
+      - react-static-files:/build/build
+
+# 定义数据卷，可以多个
+volumes:
+  main-static-files: # 一个具体数据卷的条目名称
+    name: main-static-files # 数据卷名称，默认为"工程名称_数据卷条目名称"
+  vue-static-files: # 一个具体数据卷的条目名称
+    name: vue-static-files # 数据卷名称，默认为"工程名称_数据卷条目名称"
+  react-static-files: # 一个具体数据卷的条目名称
+    name: react-static-files # 数据卷名称，默认为"工程名称_数据卷条目名称"
