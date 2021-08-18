@@ -76,7 +76,7 @@ export default defineComponent({
 
       // 关闭文件并将内容写入磁盘。
       await writableStream.close();
-    }
+    };
     onMounted(() => {
       editor = monaco.editor.create(root.value, {
         language: 'javascript',
@@ -85,10 +85,10 @@ export default defineComponent({
       editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_S, function () {
         saveStreamToFile()
       })
-    })
+    });
     onUnmounted(() => {
       editor.dispose()
-    })
+    });
     return {
       root,
       folder,
