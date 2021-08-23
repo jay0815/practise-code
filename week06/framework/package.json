@@ -1,0 +1,32 @@
+{
+  "name": "framework",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@elastic/elasticsearch": "^7.14.0",
+    "@koa/router": "^10.1.0",
+    "ioredis": "^4.27.8",
+    "koa": "^2.13.1",
+    "koa-body": "^4.2.0",
+    "koa-bodyparser": "^4.3.0",
+    "mongoose": "^5.13.7",
+    "mysql": "^2.18.1"
+  },
+  "scripts": {
+    "dev": "nodemon --ignore tests/ --watch src -e ts --exec ts-node src/app.ts",
+    "build": "tsc",
+    "start": "node ./bin/app.js",
+    "test": "ts-node tests/client.ts"
+  },
+  "devDependencies": {
+    "@types/ioredis": "^4.26.7",
+    "@types/koa": "^2.13.4",
+    "@types/koa__router": "^8.0.7",
+    "@types/mysql": "^2.15.19",
+    "axios": "^0.21.1",
+    "nodemon": "^2.0.12",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.3.5"
+  }
+}
