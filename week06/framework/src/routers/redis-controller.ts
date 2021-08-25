@@ -4,7 +4,7 @@ import { Context } from '../interface';
 const router = new Router<any, Context>();
 
 router.prefix("/redis");
-// 获取用户信息
+
 router
   .param('key', (id, ctx, next) => {
     ctx.query['key'] = id;
@@ -26,7 +26,7 @@ router
       }
     }
   });
-// 获取系统权限信息
+
 router.post('/insert', async (ctx) => {
   if (ctx.redis) {
     Object.keys(ctx.request.body).forEach((key) => {

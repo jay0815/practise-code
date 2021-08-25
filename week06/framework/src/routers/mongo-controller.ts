@@ -4,14 +4,39 @@ import { Context } from '../interface';
 const router = new Router<any, Context>();
 
 router.prefix("/mongo");
-// 获取用户信息
+
 router.get('/search', async (ctx) => {
-  console.log(ctx);
-  console.log("mongo search");
-});
-// 获取系统权限信息
+  if (ctx.mongoose) {
+    const collections = ctx.mongoose.collection("todos");
+    const res = await collections.find().toArray();    
+    ctx.response.body = {
+      code: 0,
+      message: "ok",
+      data: res
+    }
+  } else {
+      ctx.response.body = {
+        code: -1,
+        message: "mongo has disconnect"
+      }
+    }
+  }
+);
+
 router.post('/insert', async (ctx) => {
-  console.log("mongo insert");
+  if (ctx.mongoose) {
+    const collections = ctx.mongoose.collection("todos");
+    await collections.insert(ctx.request.body);
+    ctx.response.body = {
+      code: 0,
+      message: "message has inserted into mongo"
+    }
+  } else {
+      ctx.response.body = {
+        code: -1,
+        message: "mongo has disconnect"
+      }
+  }
 });
 
 export default router.routes();

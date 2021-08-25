@@ -16,7 +16,7 @@
   "scripts": {
     "dev": "nodemon --ignore tests/ --watch src -e ts --exec ts-node src/app.ts",
     "build": "tsc",
-    "start": "node ./bin/app.js",
+    "start": "node ./bin/src/app.js",
     "test": "ts-node tests/client.ts"
   },
   "devDependencies": {

@@ -1,6 +1,6 @@
-# Week05
+# Week06
 
-## 使用Koa 实现连接 MySQL、Redis、MongoDB、ElasticSearch
+## 基于 Koa 实现 MySQL、Redis、MongoDB、ElasticSearch 等DB的连接与操作
 
 ### 实现方式
 
@@ -23,7 +23,7 @@
 * 使用脚本 [start](./start.sh) 启动 [app](./src/main.ts)
 
 ```code
-sh start.sh >log.txt 2>&1
+sh start.sh
 
 ```
 
@@ -34,7 +34,25 @@ yarn test
 ```
 
 * 校验
-  * mongo使用mongo-express 查看数据插入情况
-    * 地址 [http//:localhost:8081](http//:localhost:8081)
-    * 账号：root
-    * 密码：mongodb
+  * redis 使用浏览器 or Postman 查看数据插入情况
+    * 地址 [http://localhost:8081:3000/redis/search/](http://localhost:3000/redis/search/) + 需要查询的键
+  * mongo
+    * 使用 mongo-express 查看数据插入情况
+      * 地址 [http://localhost:8081](http://localhost:8081)
+      * 账号：root
+      * 密码：mongodb
+    * 使用浏览器 or Postman 查看数据插入情况
+      * 地址 [http://localhost:3000/mongo/search](http://localhost:3000/mongo/search)
+  * mysql
+    * 使用 phpmyadmin 查看数据插入情况
+      * 地址 [http://localhost:9090](http://localhost:9090)
+      * 账号：dataUser
+      * 密码：123qwe
+    * 使用浏览器 or Postman 查看数据插入情况
+      * 地址 [http://localhost:3000/mysql/search](http://localhost:3000/mysql/search)
+  * elasticsearch
+    * 使用 elastichd 查看数据插入情况
+      * 地址 http:// + 本机的IP地址 + :9800
+    * 使用浏览器 or Postman 查看数据插入情况
+      * 地址 [http://localhost:3000/es/search](http://localhost:3000/es/search) 查看 todos 下全部
+      * 地址 [http://localhost:3000/es/search/](http://localhost:3000/es/search/) + ${key}/${value} 查看 todos 下 存在 kv 字段为 key: value 的 hit

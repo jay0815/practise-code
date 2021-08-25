@@ -5,10 +5,10 @@ interface MongooseOption extends ConnectOptions {
   url: string;
 }
 
-export type Mongoose = typeof mongoose;
+export type Mongoose = mongoose.Connection;
 
 export default (options?: MongooseOption) => {
-  let instance: Mongoose | undefined;
+  let instance: mongoose.Connection | undefined;
 
   if (options) {
     mongoose.connect(options.url, {
@@ -18,7 +18,7 @@ export default (options?: MongooseOption) => {
       useNewUrlParser: options.useNewUrlParser,
       useUnifiedTopology: options.useUnifiedTopology
     });
-    const instance = mongoose.connection;
+    instance = mongoose.connection;
     instance.on('open', () => {
         console.log('mongonDB 连接成功')
     });
@@ -27,7 +27,7 @@ export default (options?: MongooseOption) => {
     });
   }
 
-  return async (ctx: Context, next: Next) => {
+  return async (ctx: Context, next: Next) => {    
     ctx.mongoose = instance;
     await next();
   };

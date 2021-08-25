@@ -8,11 +8,32 @@ export class MySQL {
         host: options.host,
         user: options.user,
         password: options.password,
-        database: options.database
+        database: options.database,
+        port: options.port,
     });
   }
 
-  query(sql: string, values: any) {
+  query(sql: string, values?: string[]) {
+    if (this.instance) {
+      return new Promise((resolve, reject) => {
+          this.instance!.getConnection((err, connection) => {
+              if (err) {
+                  reject(err)
+              } else {
+                  connection.query(sql, (err, rows) => {
+                      if (err) {
+                          reject(err)
+                      } else {
+                          resolve(rows)
+                      }
+                      connection.release();
+                  })
+              }
+          })
+      })
+    }
+  }
+  insert(sql: string, values: string[]) {
     if (this.instance) {
       return new Promise((resolve, reject) => {
           this.instance!.getConnection((err, connection) => {
@@ -51,8 +72,8 @@ export class MySQL {
 export default (options?: PoolConfig) => {
   let instance: MySQL | undefined;
   if (options) {
-    console.log('init MySQL instance');
     instance = new MySQL(options);
+    console.log('MySQL instance has init');
   }
   return async (ctx: Context, next: Next) => {
     ctx.mysql = instance;

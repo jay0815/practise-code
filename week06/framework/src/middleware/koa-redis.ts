@@ -23,6 +23,7 @@ export default (options?: RedisOptions) => {
         return false;
       },
     });
+    console.log('Redis instance has init');
   }
 
   return async (ctx: Context, next: Next) => {
