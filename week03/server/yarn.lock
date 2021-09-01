@@ -765,6 +765,11 @@ events@^3.2.0:
   resolved "https://registry.npm.taobao.org/events/download/events-3.3.0.tgz#31a95ad0a924e2d2c419a813aeb2c4e878ea7400"
   integrity sha1-Mala0Kkk4tLEGagTrrLE6HjqdAA=
 
+express-rate-limit@^5.3.0:
+  version "5.3.0"
+  resolved "https://registry.nlark.com/express-rate-limit/download/express-rate-limit-5.3.0.tgz#e7b9d3c2e09ece6e0406a869b2ce00d03fe48aea"
+  integrity sha1-57nTwuCezm4EBqhpss4A0D/kiuo=
+
 express-sse@^0.5.3:
   version "0.5.3"
   resolved "https://registry.nlark.com/express-sse/download/express-sse-0.5.3.tgz#6e6cb1a85ef7b6ec1eb658e37e923907c482bd31"

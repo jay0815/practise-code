@@ -3,12 +3,21 @@ const SSE = require('./utils/sse');
 const update = require('./routers/update/index');
 const run = require('./routers/run/index');
 const build = require('./routers/build/index');
+// set up rate limiter: maximum of five requests per minute
+const RateLimit = require('express-rate-limit');
+const limiter = new RateLimit({
+  windowMs: 1*60*1000, // 1 minute
+  max: 5
+});
+
+// apply rate limiter to all requests
 
 const app = new express();
 const sse = new SSE(['hello!']);
 
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
+app.use(limiter);
 app.locals.sse = sse;
 
 app.all('*', (req, res, next) => {  
