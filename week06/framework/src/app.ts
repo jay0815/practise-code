@@ -12,8 +12,8 @@ const app = new Koa<any, Context>();
 
 const mysqlDB = {
   host: "localhost",
-  user: "dataUser",
-  password: "123qwe",
+  user: "xxxxx", // xxxxx = dataUser
+  password: "yyyyy", // yyyyy = 123qwe
   database: "todos",
   port: 3306
 };

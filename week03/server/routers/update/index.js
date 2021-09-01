@@ -8,6 +8,12 @@ const {
   JSON_PATH,
 } = require('../../constant/tpath');
 const md5File = require('md5-file');
+// set up rate limiter: maximum of five requests per minute
+const RateLimit = require('express-rate-limit');
+const limiter = new RateLimit({
+  windowMs: 1*60*1000, // 1 minute
+  max: 5
+});
 
 const execFile = ({ sse, path, mime, data, record }) => {
     // 重写 index.css | index.js 文件
@@ -33,7 +39,7 @@ const execFile = ({ sse, path, mime, data, record }) => {
     }
 }
 
-router.post('/', ({ body, app }, response) => {
+router.use(limiter).post('/', ({ body, app }, response) => {
     response.send('ok');
     const { sse } = app.locals;
     const { type, content } = body;
