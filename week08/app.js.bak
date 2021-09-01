@@ -1,0 +1,114 @@
+// const http = require('http');
+// // const fs = require('fs');
+// const path = require('path');
+// const Koa = require('koa');
+// const cors = require('@koa/cors');
+// const serve = require('koa-static');//koa 静态资源插件
+// const Router = require('@koa/router');
+// const socket = require('socket.io');
+
+// const app = new Koa();
+
+// app.use(cors())
+
+// const router = new Router();
+// const home = serve(path.resolve(__dirname, './www'));
+
+// const server = http.createServer(app.callback())
+
+// // const server = https.createServer({
+// //   key: fs.readFileSync(path.join(__dirname, './certificate/server.key'), 'utf8'),
+// //   cert: fs.readFileSync(path.join(__dirname, './certificate/server.crt'), 'utf8')
+// // }, app.callback());
+
+// const io = socket(server, {
+//     allowEIO3: true,
+//     cors: {
+//       origin: "*", // from the screenshot you provided
+//       methods: ["GET", "POST"]
+//     }
+// });
+
+// let numUsers = 0;
+
+// io.on('connection', function (socket) {
+//   console.log('connection');
+//   socket.on('join', (data) => {
+//     numUsers++;
+//     console.log(data, numUsers);
+//   })
+
+//   // let addedUser = false;
+
+//   // when the client emits 'new message', this listens and executes
+//   socket.on('new message', function (data) {
+//     // // we tell the client to execute 'new message'
+//     // socket.broadcast.emit('new message', {
+//     //   username: socket.username,
+//     //   message: data
+//     // });
+//   });
+
+//   // when the client emits 'add user', this listens and executes
+//   socket.on('add user', function (username) {
+//     // if (addedUser) return;
+
+//     // // we store the username in the socket session for this client
+//     // socket.username = username;
+//     // ++numUsers;
+//     // addedUser = true;
+//     // socket.emit('login', {
+//     //   numUsers: numUsers
+//     // });
+//     // // echo globally (all clients) that a person has connected
+//     // socket.broadcast.emit('user joined', {
+//     //   username: socket.username,
+//     //   numUsers: numUsers
+//     // });
+//   });
+
+//   // when the client emits 'typing', we broadcast it to others
+//   socket.on('typing', function () {
+//     socket.broadcast.emit('typing', {
+//       username: socket.username
+//     });
+//   });
+
+//   // when the client emits 'stop typing', we broadcast it to others
+//   socket.on('stop typing', function () {
+//     socket.broadcast.emit('stop typing', {
+//       username: socket.username
+//     });
+//   });
+
+//   // when the user disconnects.. perform this
+//   socket.on('disconnect', function () {
+//     // if (addedUser) {
+//     //   --numUsers;
+
+//     //   // echo globally that this client has left
+//     //   socket.broadcast.emit('user left', {
+//     //     username: socket.username,
+//     //     numUsers: numUsers
+//     //   });
+//     // }
+//   });
+// });
+
+// router.get('/health', (ctx) => {
+//   console.log('ehele');
+//   ctx.response.body = {
+//     code: 0,
+//     message: "ok"
+//   }
+// })
+
+// // router.head('/health', (req, res) => {
+// //   res.sendStatus(200);
+// // })
+
+// app.use(home);
+// app.use(router.routes());
+
+// server.listen(8000);
+
