@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import { ElTag, ElButton } from 'element-plus'
+import { ElTag, ElButton } from 'element-plus/es/index'
 
 type TagType = 'success' | 'info' | 'warning' | 'danger';
 

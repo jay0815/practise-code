@@ -1,5 +1,5 @@
 {
-  "name": "vue3-demo",
+  "name": "week11",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
@@ -7,10 +7,8 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "@element-plus/icons": "^0.0.11",
-    "@types/node": "^16.9.2",
-    "vue": "^3.2.6",
-    "vue-router": "4"
+    "@vitejs/plugin-vue-jsx": "^1.1.8",
+    "vue": "^3.2.6"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.6.1",

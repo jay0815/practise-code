@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { TagType } from "../interface/constant"
-import { ElIcon } from 'element-plus'
-import { Close } from '@element-plus/icons'
 import { ref } from "vue";
 interface Props {
   type?: TagType;
@@ -30,7 +28,7 @@ const handleClose = (e: Event) => {
 
 <template>
   <div :class="['my-tag', type]" v-if="show">
-  {{type}}<el-icon v-if="closable" @click="handleClose" class="close-icon"><close /></el-icon>
+  {{type}}
   </div>
 </template>
 
